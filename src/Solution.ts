@@ -25,7 +25,6 @@ export class Solution {
 
   getUnsolvedCount() {
     return this.options.reduce((acc, cell) => {
-      //      console.log(cell)
       return cell.length > 1 ? acc + 1 : acc;
     }, 0);
   }

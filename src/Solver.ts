@@ -11,7 +11,7 @@ export class Solver {
 
   solve(puzzle: Puzzle, bruteForce = true): Solution {
     const solution = new Solution(puzzle);
-    let str;
+    let str: string;
     do {
       str = solution.toString();
       for (let i = 0; i < this.strategies.length; i++) {
