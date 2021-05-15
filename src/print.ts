@@ -7,7 +7,7 @@ export function printPuzzle(puzzle: Puzzle) {
   const tbody = document.createElement('tbody')
   table.appendChild(tbody)
   let tr = document.createElement('tr')
-  puzzle.grid.forEach((cell, i) => {
+  puzzle.toArray().forEach((cell, i) => {
     if (i % 9 === 0) {
       tr = document.createElement('tr')
       tbody.appendChild(tr)

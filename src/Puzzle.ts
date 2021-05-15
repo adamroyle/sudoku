@@ -1,5 +1,5 @@
 export class Puzzle {
-  grid: number[]
+  private grid: number[]
 
   constructor(grid: number[]) {
     this.grid = grid
@@ -9,8 +9,12 @@ export class Puzzle {
     }
   }
 
-  validate() {
+  private validate() {
     return this.grid.length === 81
+  }
+
+  toArray(): number[] {
+    return this.grid.slice()
   }
 
   toString(): string {
