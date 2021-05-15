@@ -1,16 +1,16 @@
-import { ColumnRule } from "./ColumnRule";
-import { ExclusionRows } from "./ExclusionRows";
-import { Puzzle } from "./Puzzle";
-import { RowRule } from "./RowRule";
-import { Solver } from "./Solver";
-import { SquareRule } from "./SquareRule";
-import { printPuzzle, printSolution } from "./print";
+import { ColumnRule } from './ColumnRule'
+import { ExclusionRows } from './ExclusionRows'
+import { Puzzle } from './Puzzle'
+import { RowRule } from './RowRule'
+import { Solver } from './Solver'
+import { SquareRule } from './SquareRule'
+import { printPuzzle, printSolution } from './print'
 
-const solver = new Solver();
-solver.addStrategy(new SquareRule());
-solver.addStrategy(new RowRule());
-solver.addStrategy(new ColumnRule());
-solver.addStrategy(new ExclusionRows());
+const solver = new Solver()
+solver.addStrategy(new SquareRule())
+solver.addStrategy(new RowRule())
+solver.addStrategy(new ColumnRule())
+solver.addStrategy(new ExclusionRows())
 
 // TODO: make strategy exclusion pairs
 
@@ -27,20 +27,20 @@ solver.addStrategy(new ExclusionRows());
 
 const puzzle = Puzzle.fromString('025400000004001090000360000702003060900050004030600708000032000090100800000008240')
 
-let solution = solver.solve(puzzle, false);
+let solution = solver.solve(puzzle, false)
 
-solution.eliminateFromCell(6, 6, 5);
-solution.eliminateFromCell(6, 7, 5);
-solution.eliminateFromCell(6, 8, 5);
-solution.eliminateFromCell(8, 8, 5);
+solution.eliminateFromCell(6, 6, 5)
+solution.eliminateFromCell(6, 7, 5)
+solution.eliminateFromCell(6, 8, 5)
+solution.eliminateFromCell(8, 8, 5)
 // solution.solveCell(7, 7, 5);
 // solution.solveCell(7, 8, 3);
 
-const solution2 = solver.solve(solution.getPuzzle(), false);
+const solution2 = solver.solve(solution.getPuzzle(), false)
 
-document.body.appendChild(printPuzzle(puzzle));
-document.body.appendChild(printSolution(solution));
-document.body.appendChild(printSolution(solution2));
+document.body.appendChild(printPuzzle(puzzle))
+document.body.appendChild(printSolution(solution))
+document.body.appendChild(printSolution(solution2))
 
 //document.body.appendChild(printPuzzle(solution.getPuzzle()))
 //console.log(solution)

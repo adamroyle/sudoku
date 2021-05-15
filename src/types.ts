@@ -1,6 +1,6 @@
-import { Solution } from "./Solution";
+import { Solution } from './Solution'
 
 export interface Strategy {
-  name: string;
-  execute: (solution: Solution) => void;
+  name: string
+  execute: (solution: Solution) => void
 }
