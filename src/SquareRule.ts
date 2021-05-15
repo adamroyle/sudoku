@@ -11,7 +11,7 @@ export class SquareRule implements Strategy {
       }
     }
   }
-  solveSquare(row: number, col: number, solution: Solution) {
+  private solveSquare(row: number, col: number, solution: Solution) {
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
         const options = solution.getOptions(row + i, col + j)
@@ -26,7 +26,7 @@ export class SquareRule implements Strategy {
       }
     }
   }
-  squareRemaining(row: number, col: number, solution: Solution) {
+  private squareRemaining(row: number, col: number, solution: Solution) {
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
         const options = solution.getOptions(row + i, col + j)
