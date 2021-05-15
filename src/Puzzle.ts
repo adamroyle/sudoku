@@ -13,7 +13,11 @@ export class Puzzle {
     return this.grid.length === 81;
   }
 
-  static fromString(str: string) {
+  toString(): string {
+    return this.grid.join("");
+  }
+
+  static fromString(str: string): Puzzle {
     const grid = str
       .replace(/[^\d]/g, "")
       .split("")
