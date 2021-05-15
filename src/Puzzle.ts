@@ -9,8 +9,12 @@ export class Puzzle {
     }
   }
 
-  private validate() {
-    return this.grid.length === 81
+  static fromString(str: string): Puzzle {
+    const grid = str
+      .replace(/[^\d]/g, '')
+      .split('')
+      .map((d) => parseInt(d, 10))
+    return new Puzzle(grid)
   }
 
   toArray(): number[] {
@@ -21,11 +25,7 @@ export class Puzzle {
     return this.grid.join('')
   }
 
-  static fromString(str: string): Puzzle {
-    const grid = str
-      .replace(/[^\d]/g, '')
-      .split('')
-      .map((d) => parseInt(d, 10))
-    return new Puzzle(grid)
+  private validate() {
+    return this.grid.length === 81
   }
 }
