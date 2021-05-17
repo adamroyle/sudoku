@@ -8,10 +8,10 @@ export class Solution {
   }
 
   clone() {
-    return new Solution(this.getPuzzle())
+    return new Solution(this.toPuzzle())
   }
 
-  getPuzzle() {
+  toPuzzle() {
     return new Puzzle(this.options.map((cell) => (cell.length === 1 ? cell[0] : 0)))
   }
 

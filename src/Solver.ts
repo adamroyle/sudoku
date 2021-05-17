@@ -34,7 +34,7 @@ export class Solver {
           for (let option of options) {
             const solutionCopy = solution.clone()
             solutionCopy.solveCell(i, j, option)
-            solution2 = this.solve(solutionCopy.getPuzzle(), false)
+            solution2 = this.solve(solutionCopy.toPuzzle(), false)
             if (solution2.getUnsolvedCount() === 0) {
               return solution2
             }
