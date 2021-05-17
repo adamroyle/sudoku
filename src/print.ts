@@ -25,7 +25,7 @@ export function printSolution(solution: Solution) {
   const tbody = document.createElement('tbody')
   table.appendChild(tbody)
   let tr = document.createElement('tr')
-  solution.options.forEach((cell, i) => {
+  solution.toArray().forEach((cell, i) => {
     if (i % 9 === 0) {
       tr = document.createElement('tr')
       tbody.appendChild(tr)

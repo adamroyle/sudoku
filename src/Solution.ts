@@ -1,7 +1,7 @@
 import { Puzzle } from './Puzzle'
 
 export class Solution {
-  options: number[][]
+  private options: number[][]
 
   constructor(puzzle: Puzzle) {
     this.options = puzzle.toArray().map((cell) => (cell === 0 ? [1, 2, 3, 4, 5, 6, 7, 8, 9] : [cell]))
@@ -17,6 +17,10 @@ export class Solution {
 
   toString() {
     return this.options.map((cell) => cell.join('|')).join(',')
+  }
+
+  toArray() {
+    return this.options.map((v) => v.slice())
   }
 
   getUnsolvedCount() {
