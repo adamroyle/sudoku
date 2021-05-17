@@ -36,7 +36,7 @@ solution.eliminateFromCell(8, 8, 5)
 // solution.solveCell(7, 7, 5);
 // solution.solveCell(7, 8, 3);
 
-const solution2 = solver.solve(solution.getPuzzle(), false)
+const solution2 = solver.solve(solution.toPuzzle(), false)
 
 document.body.appendChild(printPuzzle(puzzle))
 document.body.appendChild(printSolution(solution))
