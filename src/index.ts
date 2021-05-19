@@ -1,46 +1,39 @@
-import { ColumnRule } from './ColumnRule'
 import { ExclusionRows } from './ExclusionRows'
 import { Puzzle } from './Puzzle'
-import { RowRule } from './RowRule'
 import { Solver } from './Solver'
-import { SquareRule } from './SquareRule'
 import { printPuzzle, printSolution } from './print'
+import { ExclusionSquare } from './ExclusionSquare'
+import { SquareElimination } from './SquareElimination'
 
 const solver = new Solver()
-solver.addStrategy(new SquareRule())
-solver.addStrategy(new RowRule())
-solver.addStrategy(new ColumnRule())
+solver.addStrategy(new SquareElimination())
 solver.addStrategy(new ExclusionRows())
+solver.addStrategy(new ExclusionSquare())
 
 // TODO: make strategy exclusion pairs
 
-//const puzzle = new Puzzle([0,0,1,0,6,5,2,3,7,3,0,0,0,2,9,1,6,0,0,6,4,0,0,0,9,0,0,0,2,8,0,0,4,7,0,3,0,0,0,1,0,7,8,0,0,5,0,0,2,0,0,6,9,0,4,0,0,0,0,0,5,2,0,7,5,6,9,4,2,0,1,8,9,1,0,5,8,0,0,0,0])
-//const puzzle = new Puzzle([0,0,5,0,0,0,7,0,0,0,0,4,0,0,0,2,9,0,0,0,0,0,0,0,0,0,6,0,6,0,0,0,9,0,8,0,0,0,0,0,0,8,5,4,2,8,0,0,0,2,1,0,7,0,9,0,0,0,0,0,8,0,5,0,7,0,0,8,0,0,2,1,2,5,0,0,0,0,0,0,0])
-//const puzzle = new Puzzle([0,8,5,9,0,0,0,0,0,0,0,1,2,5,0,0,0,0,7,0,0,0,8,0,0,5,1,5,9,0,0,0,0,8,0,0,0,0,4,0,0,0,6,0,0,0,0,6,0,0,0,0,3,2,9,1,0,0,7,0,0,0,3,0,0,0,0,4,5,1,0,0,0,0,0,0,0,9,7,6,0])
-//const puzzle = new Puzzle([8,0,0,0,0,0,0,7,0,0,3,0,0,0,0,0,0,0,0,0,0,5,4,0,0,8,1,0,0,0,0,0,0,1,0,0,0,0,4,6,0,7,0,0,0,7,0,0,0,5,1,0,3,2,0,0,8,9,0,0,0,0,0,0,5,1,0,8,0,6,0,0,0,2,0,0,0,6,0,0,5])
+//const puzzle = Puzzle.fromString('001065237300029160064000900028004703000107800500200690400000520756942018910580000')
+//const puzzle = Puzzle.fromString('005000700004000290000000006060009080000008542800021070900000805070080021250000000')
+//const puzzle = Puzzle.fromString('085900000001250000700080051590000800004000600006000032910070003000045100000009760')
+//const puzzle = Puzzle.fromString('800000070030000000000540081000000100004607000700051032008900000051080600020006005')
 
 // unsolvable
-//const puzzle = new Puzzle([0,0,0,0,0,0,8,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,6,4,0,3,0,0,0,0,7,0,0,0,0,0,0,0,1,0,0,2,0,0,3,0,0,0,0,0,5,4,9,6,3,0,9,0,4,0,5,0,9,0,0,0,1,0,0,0,0,0,0,8,7,0,0,0,3,1])
+// const puzzle = Puzzle.fromString('000000800002000000000006403000070000000100200300000549630904050900010000008700031')
 
-// prettier-ignore
-//const puzzle = new Puzzle([0,0,0,0,0,0,0,1,9,0,0,0,5,4,0,0,3,0,7,0,0,0,0,0,0,0,4,5,8,0,0,0,0,0,4,0,0,1,3,6,0,0,0,0,0,9,0,7,0,3,0,0,0,8,8,0,0,0,0,0,0,0,0,0,3,0,1,0,0,0,0,0,0,0,6,8,0,9,0,0,7])
+//const puzzle = Puzzle.fromString('000000019000540030700000004580000040013600000907030008800000000030100000006809007')
 
 const puzzle = Puzzle.fromString('025400000004001090000360000702003060900050004030600708000032000090100800000008240')
 
+// const puzzle = Puzzle.fromString(`000000000000000000200000000900000000700000000100000000400000000600000000800000000`)
+
 let solution = solver.solve(puzzle, false)
 
-solution.eliminateFromCell(6, 6, 5)
-solution.eliminateFromCell(6, 7, 5)
-solution.eliminateFromCell(6, 8, 5)
-solution.eliminateFromCell(8, 8, 5)
-// solution.solveCell(7, 7, 5);
-// solution.solveCell(7, 8, 3);
-
-const solution2 = solver.solve(solution.toPuzzle(), false)
+// const solution2 = solution.clone()
+// new ExclusionSquare().execute(solution2)
 
 document.body.appendChild(printPuzzle(puzzle))
 document.body.appendChild(printSolution(solution))
-document.body.appendChild(printSolution(solution2))
+// document.body.appendChild(printSolution(solution2))
 
 //document.body.appendChild(printPuzzle(solution.getPuzzle()))
 //console.log(solution)
