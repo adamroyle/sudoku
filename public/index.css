@@ -20,10 +20,6 @@
   border-bottom: 2px solid black;
 }
 
-.puzzle + .puzzle {
-  margin-top: 2rem;
-}
-
 .puzzle td {
   position: relative;
 }
@@ -54,4 +50,10 @@
 .puzzle span:nth-child(4) {
   bottom: 0;
   right: 0;
+}
+
+.puzzle-container {
+  display: flex;
+  margin-bottom: 3rem;
+  gap: 2rem;
 }
