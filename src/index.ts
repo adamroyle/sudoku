@@ -4,20 +4,23 @@ import { Solver } from './Solver'
 import { printPuzzle, printSolution } from './print'
 import { ExclusionSquare } from './ExclusionSquare'
 import { SquareElimination } from './SquareElimination'
+import { Solution } from './Solution'
+import { ReservedCellsSquare } from './ReservedCellsSquare'
 
 const solver = new Solver()
 solver.addStrategy(new SquareElimination())
 solver.addStrategy(new ExclusionRows())
 solver.addStrategy(new ExclusionSquare())
+solver.addStrategy(new ReservedCellsSquare())
 
 // TODO: make strategy exclusion pairs
 
 const puzzles = [
   // unsolved
-  '904600000100900005070050100007080600000400003005000000006037500003006080000002001', // from mum's book - 2 light bulbs (have solved on paper)
-  '000050009904001000000006800020800006070000000500270000000000728015000060003000050', // from internet - expert
   '009000005002004061080006000000030720740000009000045000905000010008010900400800002', // from mum's book - 3 light bulbs
   // solved
+  '904600000100900005070050100007080600000400003005000000006037500003006080000002001', // from mum's book - 2 light bulbs (have solved on paper)
+  '000050009904001000000006800020800006070000000500270000000000728015000060003000050', // from internet - expert
   '450016000090300500700400000830040100000901000009060058000004009006002080000670013',
   '210040008005000000006500200500080030000203000080070001009005300000000900600030084',
   '002007060095820000000000500000492000600000031007000004540003070000010008100670000',
@@ -41,5 +44,8 @@ puzzles.forEach((puzzleString) => {
   puzzleRow.className = 'puzzle-container'
   puzzleRow.appendChild(printPuzzle(puzzle))
   puzzleRow.appendChild(printSolution(solution))
+  console.log(solution.toPuzzle().toString())
+  puzzleRow.appendChild(printSolution(new Solution(solution.toPuzzle())))
+
   document.body.appendChild(puzzleRow)
 })
