@@ -24,14 +24,11 @@ export class ExclusionSquare implements Strategy {
         }
       }
       if (square > -1) {
-        // console.log('found', num, 'in square', square, 'row', row)
-        // return
         const squareCol = square * 3
         const squareRow = Math.floor(row / 3) * 3
         for (let i = squareRow; i < squareRow + 3; i++) {
           if (i === row) continue
           for (let j = squareCol; j < squareCol + 3; j++) {
-            // console.log('eliminateFromCell', i, j, num)
             solution.eliminateFromCell(i, j, num)
           }
         }
