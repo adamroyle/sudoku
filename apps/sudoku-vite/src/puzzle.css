@@ -1,0 +1,59 @@
+.puzzle {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+.puzzle td {
+  width: 2.25rem;
+  height: 2.25rem;
+  text-align: center;
+  vertical-align: middle;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.puzzle td:nth-child(3n + 0) {
+  border-right: 2px solid black;
+}
+
+.puzzle tr:nth-child(3n + 0) td {
+  border-bottom: 2px solid black;
+}
+
+.puzzle td {
+  position: relative;
+}
+
+.puzzle span {
+  font-size: smaller;
+  opacity: 0.2;
+  position: absolute;
+  display: block;
+  padding: 2px;
+}
+
+.puzzle span:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+
+.puzzle span:nth-child(2) {
+  top: 0;
+  right: 0;
+}
+
+.puzzle span:nth-child(3) {
+  bottom: 0;
+  left: 0;
+}
+
+.puzzle span:nth-child(4) {
+  bottom: 0;
+  right: 0;
+}
+
+.puzzle-container {
+  display: flex;
+  margin-bottom: 3rem;
+  gap: 2rem;
+}

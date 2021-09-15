@@ -1,0 +1,11 @@
+{
+  "name": "core",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "types": "src/index.ts",
+  "scripts": {
+    "start": "npm run build -- --watch",
+    "prebuild": "rm -rf build && cp -r public build",
+    "build": "esbuild src/index.ts --bundle --minify --sourcemap --outfile=build/index.js"
+  }
+}
