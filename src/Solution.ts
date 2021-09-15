@@ -68,6 +68,7 @@ export class Solution {
   //   return options
   // }
 
+  // TODO: add optional Strategy param so we can track who solved what?
   eliminateFromCell(row: number, col: number, value: number) {
     const index = this.getIndex(row, col)
     const options = this.options[index]
@@ -85,6 +86,7 @@ export class Solution {
     }
   }
 
+  // TODO: add optional Strategy param so we can track who solved what?
   solveCell(row: number, col: number, value: number) {
     const index = this.getIndex(row, col)
     const options = this.options[index]
