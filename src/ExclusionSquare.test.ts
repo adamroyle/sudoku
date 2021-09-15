@@ -5,7 +5,7 @@ import { Solution } from './Solution'
 test('exclude number from other cells within square if one row must contain that number', () => {
   const puzzle = Puzzle.fromString('0'.repeat(7 * 9) + '297 146 800' + '0'.repeat(9))
   const solution = new Solution(puzzle)
-  new ExclusionSquare().execute(solution)
+  new ExclusionSquare().solve(solution)
 
   expect(solution.getOptions(6, 6)).not.toContain(5)
   expect(solution.getOptions(6, 7)).not.toContain(5)
@@ -25,7 +25,7 @@ test('exclude number from other cells within square if one row must contain that
 test('#2: exclude number from other cells within square if one row must contain that number', () => {
   const puzzle = Puzzle.fromString('0'.repeat(2 * 9) + '002 971 468' + '0'.repeat(6 * 9))
   const solution = new Solution(puzzle)
-  new ExclusionSquare().execute(solution)
+  new ExclusionSquare().solve(solution)
 
   expect(solution.getOptions(0, 0)).not.toContain(5)
   expect(solution.getOptions(0, 1)).not.toContain(5)
@@ -54,7 +54,7 @@ test('exclude number from other cells within square if one col must contain that
     600000000
     800000000`)
   const solution = new Solution(puzzle)
-  new ExclusionSquare().execute(solution)
+  new ExclusionSquare().solve(solution)
 
   expect(solution.getOptions(0, 1)).not.toContain(5)
   expect(solution.getOptions(0, 2)).not.toContain(5)

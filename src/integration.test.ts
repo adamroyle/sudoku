@@ -1,4 +1,4 @@
-import { Solver } from './index'
+import { StrategyCollection } from './index'
 import { ExclusionRows } from './ExclusionRows'
 import { ExclusionSquare } from './ExclusionSquare'
 import { ReservedCellsSquare } from './ReservedCellsSquare'
@@ -32,12 +32,14 @@ it('should solve all these puzzles', () => {
     '000000019000540030700000004580000040013600000907030008800000000030100000006809007',
     '025400000004001090000360000702003060900050004030600708000032000090100800000008240',
     '009065000000300000500000004003000007080402900000017000000000200005096800720000300',
+    '009000100000451000406090705030902070091000850070508030105070904000185000007000500',
   ]
 
-  const solver = new Solver(allStrategies)
+  const strategyCollection = new StrategyCollection(allStrategies)
 
   for (let puzzle of puzzles) {
-    const solution = solver.solve(new Solution(Puzzle.fromString(puzzle)))
+    const solution = new Solution(Puzzle.fromString(puzzle))
+    strategyCollection.solve(solution)
     expect(solution.getUnsolvedCount()).toBe(0)
   }
 })
@@ -45,10 +47,10 @@ it('should solve all these puzzles', () => {
 it('should brute solve these puzzles', () => {
   const puzzles = ['009000005002004061080006000000030720740000009000045000905000010008010900400800002']
 
-  const solver = new BruteSolver(new Solver(allStrategies))
+  const strategyCollection = new BruteSolver(new StrategyCollection(allStrategies))
 
   for (let puzzle of puzzles) {
-    const solution = solver.solve(new Solution(Puzzle.fromString(puzzle)))
+    const solution = strategyCollection.solve(new Solution(Puzzle.fromString(puzzle)))
     expect(solution.getUnsolvedCount()).toBe(0)
   }
 })

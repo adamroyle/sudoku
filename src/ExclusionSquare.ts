@@ -3,7 +3,7 @@ import { Strategy } from './types'
 
 export class ExclusionSquare implements Strategy {
   name = 'Exclusion Square'
-  execute(solution: Solution) {
+  solve(solution: Solution) {
     for (let row = 0; row < 9; row++) {
       this.solveRow(solution, row)
       this.solveCol(solution, row)

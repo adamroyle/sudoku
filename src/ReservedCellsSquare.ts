@@ -3,7 +3,7 @@ import { Strategy } from './types'
 
 export class ReservedCellsSquare implements Strategy {
   name = 'Reserved Cells Square'
-  execute(solution: Solution) {
+  solve(solution: Solution) {
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
         this.executeSquare(i * 3, j * 3, solution)
