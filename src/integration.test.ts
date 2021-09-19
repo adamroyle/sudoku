@@ -48,12 +48,14 @@ it('should brute solve these puzzles', () => {
   const puzzles = [
     '009000005002004061080006000000030720740000009000045000905000010008010900400800002',
     '008007090951000000000050048000002107090000050703800000630090000000000463080300700',
+    '000000000000000000000000000000000000000000000000000000000000000000000000000000000',
   ]
 
-  const strategyCollection = new BruteSolver(new StrategyCollection(allStrategies))
+  const bruteSolver = new BruteSolver()
 
   for (let puzzle of puzzles) {
-    const solution = strategyCollection.solve(new Solution(Puzzle.fromString(puzzle)))
+    const solution = new Solution(Puzzle.fromString(puzzle))
+    bruteSolver.solve(solution)
     expect(solution.getUnsolvedCount()).toBe(0)
   }
 })
