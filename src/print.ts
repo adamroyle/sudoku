@@ -13,7 +13,7 @@ export function printPuzzle(puzzle: Puzzle) {
       tbody.appendChild(tr)
     }
     const td = document.createElement('td')
-    td.innerText = String(cell || '')
+    td.innerText = `${cell || ''}`
     tr.appendChild(td)
   })
   return table
@@ -32,15 +32,41 @@ export function printSolution(solution: Solution) {
     }
     const td = document.createElement('td')
     if (cell.length === 1) {
-      td.innerText = String(cell[0])
+      td.innerText = `${cell[0]}`
     } else {
       cell.forEach((bit) => {
         const span = document.createElement('span')
-        span.innerText = String(bit)
+        span.innerText = `${bit}`
         td.appendChild(span)
       })
     }
     tr.appendChild(td)
   })
   return table
+}
+
+export function puzzleToText(puzzle: Puzzle): string {
+  const tmpl = `
+┏━━━┯━━━┯━━━┳━━━┯━━━┯━━━┳━━━┯━━━┯━━━┓
+┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃
+┠───┼───┼───╂───┼───┼───╂───┼───┼───┨
+┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃
+┠───┼───┼───╂───┼───┼───╂───┼───┼───┨
+┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃
+┣━━━┿━━━┿━━━╋━━━┿━━━┿━━━╋━━━┿━━━┿━━━┫
+┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃
+┠───┼───┼───╂───┼───┼───╂───┼───┼───┨
+┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃
+┠───┼───┼───╂───┼───┼───╂───┼───┼───┨
+┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃
+┣━━━┿━━━┿━━━╋━━━┿━━━┿━━━╋━━━┿━━━┿━━━┫
+┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃
+┠───┼───┼───╂───┼───┼───╂───┼───┼───┨
+┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃
+┠───┼───┼───╂───┼───┼───╂───┼───┼───┨
+┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃ 1 │ 1 │ 1 ┃
+┗━━━┷━━━┷━━━┻━━━┷━━━┷━━━┻━━━┷━━━┷━━━┛
+`
+  const digits = puzzle.toArray()
+  return tmpl.replace(/1/g, () => `${digits.shift() || ' '}`).slice(1)
 }
