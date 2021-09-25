@@ -7,6 +7,7 @@ import { Puzzle } from './index'
 import { Solution } from './index'
 import { BruteSolver } from './index'
 import { Strategy } from './index'
+import { puzzleToText } from './print'
 
 const allStrategies: Strategy[] = [
   new ExclusionRows(),
@@ -34,6 +35,9 @@ it('should solve all these puzzles', () => {
     '009065000000300000500000004003000007080402900000017000000000200005096800720000300',
     '009000100000451000406090705030902070091000850070508030105070904000185000007000500',
     '020000090300050001001903400007801300090000010002709800003204500500090002010000070',
+    '013000004090210000002000500500006207009020060000800000000000700000700800470508000',
+    '000000000040508006200100000000000000800050903107043800705290600000000020006000170',
+    '800000000000060430005100000000090005000008600070036900109040000600000002300207000',
   ]
 
   const strategyCollection = new StrategyCollection(allStrategies)
@@ -42,6 +46,7 @@ it('should solve all these puzzles', () => {
     const solution = new Solution(Puzzle.fromString(puzzle))
     strategyCollection.solve(solution)
     expect(solution.getUnsolvedCount()).toBe(0)
+    console.log(puzzleToText(solution.toPuzzle()))
   }
 })
 
@@ -58,5 +63,6 @@ it('should brute solve these puzzles', () => {
     const solution = new Solution(Puzzle.fromString(puzzle))
     bruteSolver.solve(solution)
     expect(solution.getUnsolvedCount()).toBe(0)
+    console.log(puzzleToText(solution.toPuzzle()))
   }
 })
