@@ -1,4 +1,3 @@
-export { BruteSolver } from './BruteSolver'
 export { StrategyCollection } from './StrategyCollection'
 export { Puzzle } from './Puzzle'
 export { Solution } from './Solution'
