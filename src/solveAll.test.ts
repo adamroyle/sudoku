@@ -1,3 +1,4 @@
+import { puzzleToText } from './print'
 import { Puzzle } from './Puzzle'
 import { Solution } from './Solution'
 
@@ -7,6 +8,17 @@ it('should solve multiple', () => {
   const solution = new Solution(Puzzle.fromString('0'.repeat(81)))
   const iterator = solveAll(solution)
   expect(iterator.next().done).toBe(false)
+  // for (let i = 0; i < 10; i++) {
+  //   const val = iterator.next()
+  //   console.log(val)
+  //   if (val.value) {
+  //     //   console.log('NO VALUE ' + i)
+  //     console.log(val.value.toPuzzle().toString())
+  //   }
+  //   if (val.done) {
+  //     console.log('NO MORE AT ' + i)
+  //   }
+  // }
 })
 
 it('should solve these puzzles with single result', () => {

@@ -1,6 +1,6 @@
 import { Solution } from './Solution'
 
-export function* solveAll(solution: Solution) {
+export function* solveAll(solution: Solution): Generator<Solution, void, void> {
   const cell = getCell(solution)
   if (cell) {
     const [row, col] = cell
@@ -9,29 +9,11 @@ export function* solveAll(solution: Solution) {
       const solutionCopy = solution.clone()
       try {
         solutionCopy.solveCell(row, col, option)
-
-        if (solutionCopy.getUnsolvedCount() > 0) {
-          // brute solve recursively
-          const iter = solveAll(solutionCopy)
-          while (true) {
-            const result = iter.next()
-            if (result.value) {
-              const laSol = result.value as Solution
-              if (laSol.getUnsolvedCount() === 0) {
-                yield laSol
-              }
-            }
-            if (result.done) {
-              break
-            }
-          }
-          // ignore this copy if it didn't solve
-          if (solutionCopy.getUnsolvedCount() > 0) {
-            continue
-          }
+        if (solutionCopy.getUnsolvedCount() === 0) {
+          yield solutionCopy
+        } else {
+          yield* solveAll(solutionCopy)
         }
-
-        yield solutionCopy
       } catch (e) {
         // ignore errors
       }
