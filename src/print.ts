@@ -6,15 +6,16 @@ export function printPuzzle(puzzle: Puzzle) {
   table.className = 'puzzle'
   const tbody = document.createElement('tbody')
   table.appendChild(tbody)
-  let tr = document.createElement('tr')
-  puzzle.toArray().forEach((cell, i) => {
-    if (i % 9 === 0) {
-      tr = document.createElement('tr')
-      tbody.appendChild(tr)
-    }
-    const td = document.createElement('td')
-    td.innerText = `${cell || ''}`
-    tr.appendChild(td)
+
+  puzzle.toGrid().forEach((row, i) => {
+    const tr = document.createElement('tr')
+    tbody.appendChild(tr)
+
+    row.forEach((cell, j) => {
+      const td = document.createElement('td')
+      td.textContent = `${cell || ''}`
+      tr.appendChild(td)
+    })
   })
   return table
 }

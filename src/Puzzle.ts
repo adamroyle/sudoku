@@ -1,31 +1,39 @@
 export class Puzzle {
-  private grid: number[]
+  private cells: number[]
 
-  constructor(grid: number[]) {
-    this.grid = grid
+  constructor(cells: number[]) {
+    this.cells = cells
 
     if (!this.validate()) {
-      throw new Error('Puzzle grid not valid')
+      throw new Error('Puzzle not valid')
     }
   }
 
   static fromString(str: string): Puzzle {
-    const grid = str
-      .replace(/[^\d]/g, '')
+    const cells = str
+      .replace(/[^\d]+/g, '')
       .split('')
       .map((d) => parseInt(d, 10))
-    return new Puzzle(grid)
+    return new Puzzle(cells)
   }
 
   toArray(): number[] {
-    return this.grid.slice()
+    return this.cells.slice()
   }
 
   toString(): string {
-    return this.grid.join('')
+    return this.cells.join('')
+  }
+
+  toGrid(): number[][] {
+    const grid = []
+    for (let i = 0; i < 9; i++) {
+      grid.push(this.cells.slice(i * 9, i * 9 + 9))
+    }
+    return grid
   }
 
   private validate() {
-    return this.grid.length === 81
+    return this.cells.length === 81
   }
 }

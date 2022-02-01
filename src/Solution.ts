@@ -31,6 +31,14 @@ export class Solution {
     return this.options.map((v) => v.slice())
   }
 
+  toGrid(): number[][][] {
+    const grid = []
+    for (let i = 0; i < 9; i++) {
+      grid.push(this.options.slice(i * 9, i * 9 + 9))
+    }
+    return grid
+  }
+
   getUnsolvedCount() {
     return this.options.reduce((acc, cell) => {
       return cell.length > 1 ? acc + 1 : acc
