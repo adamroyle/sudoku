@@ -10,7 +10,7 @@ it('should solve multiple', () => {
   expect(iterator.next().done).toBe(false)
   // for (let i = 0; i < 10; i++) {
   //   const val = iterator.next()
-  //   console.log(val)
+    // console.log(val)
   //   if (val.value) {
   //     //   console.log('NO VALUE ' + i)
   //     console.log(val.value.toPuzzle().toString())
@@ -29,6 +29,7 @@ it('should solve these puzzles with single result', () => {
     '003000900480205063600000008010804030070000080060709020200000006840603071006000300',
     '010002008500907001003005000000000040170000053040000000000500600300208009900700010',
     '800000001006901800050030040060709050001000400070802010010080060004107300300000002',
+    '007003902000800000943000007690000000300527000000000840000048000260000000000000129',
   ]
   for (let str of puzzles) {
     const solution = new Solution(Puzzle.fromString(str))
